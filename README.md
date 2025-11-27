@@ -1,42 +1,50 @@
-# CXL-MemSim-Compute-Express-Link-CXL-Memory-Simulation-and-Visualization-Toolkit
+# **CXL-MemSim – Compute Express Link (CXL) Memory Simulation and Visualization Toolkit**
 
-Overview
-**
-CXL-MemSim is a lightweight simulation and visualization toolkit designed to model, compare, and analyze DDR5 vs CXL-Type3 memory performance.
+## **Overview**
+
+CXL-MemSim is a lightweight simulation and visualization toolkit designed to model, compare, and analyze **DDR5 vs CXL-Type3 memory performance**.
 It generates synthetic telemetry, computes latency and bandwidth metrics, and produces publication-quality plots for architectural exploration.
-This project is part of my ongoing study of emerging memory technologies, cloud-scale system architecture, and hardware/software co-design.
-Features
-Synthetic telemetry dataset generation for DDR5 and CXL-Type3
-Latency curve visualization
-Bandwidth curve computation and visualization
-Organized project structure with reproducible outputs
-Built using Python, pandas, numpy, seaborn, and matplotlib
-Easily extendable to real hardware telemetry or PMU counter logs
-Memory Model
-The simulator models:
-DDR5 latency behavior vs access size
-CXL-Type3 latency overhead
-Bandwidth calculation:
-Bandwidth (MB/s)
-=**
-Access Size (KB)
-Latency (ns)
-×
-10
-6
-Bandwidth (MB/s)= 
-Latency (ns)
-Access Size (KB)
-​	
- ×10 
- 6
- 
-This framework can incorporate:
-Real DRAM/CXL timing
-Cloud computing telemetry
-Vendor-specific latency tables
 
-Project Structure
+This project is part of my broader study of **emerging memory technologies**, **cloud-scale system architecture**, and **hardware/software co-design**.
+
+---
+
+## **Features**
+
+* Synthetic telemetry dataset generation for DDR5 and CXL-Type3
+* Latency curve visualization
+* Bandwidth curve computation and visualization
+* Organized project structure with reproducible outputs
+* Built using Python, pandas, numpy, seaborn, and matplotlib
+* Easily extendable to real hardware telemetry or performance-monitoring data
+
+---
+
+## **Memory Model**
+
+The simulator models:
+
+* DDR5 latency behavior vs access size
+* CXL-Type3 latency overhead
+* Bandwidth calculation:
+
+### **Bandwidth Formula**
+
+```text
+Bandwidth (MB/s) = (Access Size (KB) / Latency (ns)) × 10^6
+```
+
+This framework can incorporate:
+
+* Real DRAM/CXL vendor timing
+* Cloud telemetry
+* PMU counter logs
+
+---
+
+## **Project Structure**
+
+```
 CXL-MemSim/
 │
 ├── src/
@@ -53,28 +61,68 @@ CXL-MemSim/
 ├── venv/  (optional)
 │
 └── README.md
+```
 
-#Installation
-1. Create a virtual environment
+---
+
+## **Installation**
+
+### 1. Create a virtual environment
+
+```bash
 python3 -m venv venv
 source venv/bin/activate
-2. Install dependencies
+```
+
+### 2. Install dependencies
+
+```bash
 pip install pandas numpy seaborn matplotlib
-Usage
-1. Generate telemetry
+```
+
+---
+
+## **Usage**
+
+### 1. Generate telemetry
+
+```bash
 python src/simulator.py
-2. Generate plots
+```
+
+### 2. Generate plots
+
+```bash
 python src/plotter.py
+```
 
-#Output
-Latency Curve
+---
+
+## **Output**
+
+### **Latency Curve**
+
 Compares DDR5 vs CXL-Type3 latency across access sizes.
-Saved as: results/latency_curve.png
-Bandwidth Curve
-Bandwidth derived from telemetry latency values.
-Saved as: results/bandwidth_curve.png
+Saved as:
 
-#Example Code (plotter.py)
+```
+results/latency_curve.png
+```
+
+### **Bandwidth Curve**
+
+Bandwidth derived from latency values.
+Saved as:
+
+```
+results/bandwidth_curve.png
+```
+
+---
+
+## **Example Code (plotter.py)**
+
+```python
 import os
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -116,10 +164,16 @@ def plot_latency_and_bandwidth():
 
 if __name__ == "__main__":
     plot_latency_and_bandwidth()
+```
 
-#Future Work
-Incorporate real PMU-based telemetry data
-Add CXL memory pooling and switching models
-Simulate multi-socket NUMA topologies
-Integrate with HPC and AI workload traces
-Add support for hardware performance monitoring counters
+---
+
+## **Future Work**
+
+* Integrate real PMU-based telemetry
+* Add CXL memory pooling and switching models
+* Simulate multi-socket NUMA + CXL architectures
+* Extend to HPC and AI workload traces
+* Support hardware performance monitoring counters
+
+---
