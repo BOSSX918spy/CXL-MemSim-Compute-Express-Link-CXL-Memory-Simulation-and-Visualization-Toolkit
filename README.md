@@ -1,6 +1,7 @@
 # CXL-MemSim-Compute-Express-Link-CXL-Memory-Simulation-and-Visualization-Toolkit
 
 Overview
+**
 CXL-MemSim is a lightweight simulation and visualization toolkit designed to model, compare, and analyze DDR5 vs CXL-Type3 memory performance.
 It generates synthetic telemetry, computes latency and bandwidth metrics, and produces publication-quality plots for architectural exploration.
 This project is part of my ongoing study of emerging memory technologies, cloud-scale system architecture, and hardware/software co-design.
@@ -17,7 +18,7 @@ DDR5 latency behavior vs access size
 CXL-Type3 latency overhead
 Bandwidth calculation:
 Bandwidth (MB/s)
-=
+=**
 Access Size (KB)
 Latency (ns)
 ×
@@ -28,12 +29,13 @@ Latency (ns)
 Access Size (KB)
 ​	
  ×10 
-6
+ 6
  
 This framework can incorporate:
 Real DRAM/CXL timing
 Cloud computing telemetry
 Vendor-specific latency tables
+
 Project Structure
 CXL-MemSim/
 │
@@ -51,7 +53,8 @@ CXL-MemSim/
 ├── venv/  (optional)
 │
 └── README.md
-Installation
+
+#Installation
 1. Create a virtual environment
 python3 -m venv venv
 source venv/bin/activate
@@ -62,14 +65,16 @@ Usage
 python src/simulator.py
 2. Generate plots
 python src/plotter.py
-Output
+
+#Output
 Latency Curve
 Compares DDR5 vs CXL-Type3 latency across access sizes.
 Saved as: results/latency_curve.png
 Bandwidth Curve
 Bandwidth derived from telemetry latency values.
 Saved as: results/bandwidth_curve.png
-Example Code (plotter.py)
+
+#Example Code (plotter.py)
 import os
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -111,7 +116,8 @@ def plot_latency_and_bandwidth():
 
 if __name__ == "__main__":
     plot_latency_and_bandwidth()
-Future Work
+
+#Future Work
 Incorporate real PMU-based telemetry data
 Add CXL memory pooling and switching models
 Simulate multi-socket NUMA topologies
